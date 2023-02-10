@@ -1,0 +1,59 @@
+import tkinter as tk
+
+def imprimir_materiales(equipos):
+    materials = []
+    equipos = equipos.split(',')
+    for equipo in equipos:
+        equipo = equipo.strip()
+        if equipo == "Radios":
+            materials.append("\"Radio ALOHA AFIG Total 6\"")
+            materials.append("1. 6 Lug 90'")
+            materials.append("2. Heat Shrink")
+            materials.append("3. 80FT Ground #6")
+            materials.append("4. lugs for bussbar Total 12")
+            materials.append("5. bussbar Total 3")
+            materials.append("6. Hibrid Jumpers total 3")
+            materials.append("7 Ret-cable total Total3")
+        elif equipo == "Antenas":
+            materials.append("\"Antena 65C 8 puertos total 3\"")
+            materials.append("1. RF Jumpers mimi to mimi Total 32")
+            materials.append("2. Snapping Total 180")
+            materials.append("3. 3 way Total 10")
+            materials.append("4. Angle Adapter")
+        elif equipo == "AEHC":
+            materials.append("\"5G Antena 3 Total\"")
+            materials.append("1. Hybrid Jumpers Total 3")
+            materials.append("2. Lugs 90' Total 3")
+            materials.append("3. ground #2 Total 30FT")
+        elif equipo == "Booster":
+            materials.append("\"Booster PSU/\"")
+            materials.append("1. lug para cable grueso #3")
+        elif equipo == "Router":
+            materials.append("\"7250_ixr\"")
+            materials.append("1. Tarjetas SFP")
+            materials.append("2. cables HDMI")
+        elif equipo == "OVP":
+            materials.append("\"Raycap\"")
+            materials.append("1. Liquid counduit")
+            materials.append("2. cup")
+            materials.append("3. Ground #6")
+        
+        else:
+            materials.append(f"\"Entrada no válida: {equipo}\"")
+    
+    result = '\n'.join(materials)
+    result_label.config(text=result)
+
+root = tk.Tk()
+root.title("Ingreso de equipo")
+root.geometry("600x400")
+
+equipo_entry = tk.Entry(root)
+equipo_entry.pack()
+
+tk.Button(root, text="Aceptar", command=lambda: imprimir_materiales(equipo_entry.get())).pack()
+
+result_label = tk.Label(root, text="")
+result_label.pack()
+
+root.mainloop()
